@@ -1,7 +1,10 @@
 PATH
   remote: .
   specs:
-    perigren_github_client (0.1.0)
+    perigren_github_client (0.1.1)
+      excon
+      jwt
+      openssl
 
 GEM
   remote: https://rubygems.org/
