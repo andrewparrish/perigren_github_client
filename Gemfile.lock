@@ -7,6 +7,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     excon (0.62.0)
+    jwt (2.1.0)
+    openssl (2.1.1)
     rake (10.5.0)
 
 PLATFORMS
@@ -15,6 +17,8 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   excon
+  jwt
+  openssl
   perigren_github_client!
   rake (~> 10.0)
 

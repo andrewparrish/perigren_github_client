@@ -3,18 +3,26 @@ require 'openssl'
 require 'jwt'
 require 'pry'
 require 'json'
+require 'perigren_github_client/pull_request_client'
 
-module ApiClient
-  BASE_URL = 'https://api.github.com/app' 
+module PerigrenGithubClient
+  BASE_URL = 'https://api.github.com' 
 
   class Client
+    include PullRequestClient
+
     attr_reader :token_data
 
-    def initialize(app_id, private_pem = ENV['GITHUB_PRIVATE_KEY'], jwt = nil, token = nil)
+    def initialize(app_id, installation_id = nil, token = nil, private_pem = ENV['GITHUB_PRIVATE_KEY'], jwt = nil)
       @app_id = app_id
       @connection = Excon.new('https://api.github.com/app', :persistent => false)
-      @jwt = jwt || fetch_jwt(private_pem)
-      @installation_id = fetch_installation_id
+      unless token && installation_id
+        @jwt = jwt || fetch_jwt(private_pem)
+        @installation_id = fetch_installation_id
+      else
+        @installation_id = installation_id
+      end
+      token = { token: token } if token
       @token_data = token || fetch_token
     end
 
@@ -57,9 +65,9 @@ module ApiClient
     end
 
     def fetch_token
-      request = Excon.post(BASE_URL + "/installations/#{@installation_id}/access_tokens", headers: base_headers.merge(private_jwt_header))
+      request = Excon.post(BASE_URL + "/app/installations/#{@installation_id}/access_tokens", headers: base_headers.merge(private_jwt_header))
       token_data = JSON.parse(request.body)
-      { token: token_data['token'], expires: token_data['expires_at'] }
+      @token_data = { token: token_data['token'], expires: token_data['expires_at'] }
     end
   end
 end
