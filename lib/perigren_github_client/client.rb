@@ -16,9 +16,9 @@ module PerigrenGithubClient
     def initialize(app_id, installation_id = nil, token = nil, private_pem = ENV['GITHUB_PRIVATE_KEY'], jwt = nil)
       @app_id = app_id
       @connection = Excon.new('https://api.github.com/app', :persistent => false)
-      unless token && installation_id
+      unless token
         @jwt = jwt || fetch_jwt(private_pem)
-        @installation_id = fetch_installation_id
+        @installation_id = installation_id || fetch_installation_id
       else
         @installation_id = installation_id
       end
