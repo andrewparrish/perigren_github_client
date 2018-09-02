@@ -14,7 +14,7 @@ module PerigrenGithubClient
     attr_reader :token_data
 
     def initialize(app_id, installation_id = nil, token = nil,
-                   private_pem = ENV['GITHUB_PRIVATE_KEY'].sub('\\n', '\n'), jwt = nil)
+                   private_pem = ENV['GITHUB_PRIVATE_KEY'].sub("\\n", "\n"), jwt = nil)
       @app_id = app_id
       @connection = Excon.new('https://api.github.com/app', :persistent => false)
       unless token
