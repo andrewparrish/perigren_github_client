@@ -4,12 +4,14 @@ require 'jwt'
 require 'pry'
 require 'json'
 require 'perigren_github_client/pull_request_client'
+require 'perigren_github_client/organizations_client'
 
 module PerigrenGithubClient
   BASE_URL = 'https://api.github.com' 
 
   class Client
     include PullRequestClient
+    include OrganizationsClient
 
     attr_reader :token_data
 
