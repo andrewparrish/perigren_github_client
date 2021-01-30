@@ -1,29 +1,29 @@
 PATH
   remote: .
   specs:
-    perigren_github_client (0.1.1)
-      excon
+    perigren_github_client (0.1.63)
+      excon (>= 0.71.0)
       jwt
       openssl
 
 GEM
   remote: https://rubygems.org/
   specs:
-    excon (0.62.0)
-    jwt (2.1.0)
-    openssl (2.1.1)
-    rake (10.5.0)
+    excon (0.78.1)
+    jwt (2.2.2)
+    openssl (2.2.0)
+    rake (13.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
-  excon
+  bundler (>= 1.16.1)
+  excon (>= 0.71.0)
   jwt
   openssl
   perigren_github_client!
-  rake (~> 10.0)
+  rake (>= 12.3.3)
 
 BUNDLED WITH
-   1.16.1
+   2.1.2
