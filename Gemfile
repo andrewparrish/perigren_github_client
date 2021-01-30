@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'excon'
+gem 'excon', ">= 0.71.0"
 gem 'openssl'
 gem 'jwt'
 
