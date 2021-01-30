@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    perigren_github_client (0.1.1)
+    perigren_github_client (0.1.63)
       excon
       jwt
       openssl
@@ -18,12 +18,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (= 1.16.1)
   excon
   jwt
   openssl
   perigren_github_client!
-  rake (~> 10.0)
+  rake (>= 10.0)
 
 BUNDLED WITH
    1.16.1
