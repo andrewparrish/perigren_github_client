@@ -1,7 +1,6 @@
 require 'excon'
 require 'openssl'
 require 'jwt'
-require 'pry'
 require 'json'
 require 'perigren_github_client/pull_request_client'
 require 'perigren_github_client/organizations_client'
